@@ -1,0 +1,28 @@
+GET http://localhost:5020
+
+# GET http://
+
+
+###
+POST http://localhost:5020/users
+Content-Type: application/json
+
+{
+    "firstName": "Pinco",
+    "lastName": "Pallino",
+    "age": 35
+}
+###
+PUT http://localhost:5020/users/50
+Content-Type: application/json
+
+{
+    "firstName": "Pinco Modificato",
+    "lastName": "Pallino",
+    "age": 35
+}
+###
+DELETE http://localhost:5020/users/100
+Content-Type: application/json
+
+
