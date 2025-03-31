@@ -1,16 +1,36 @@
-GET http://localhost:5020
+GET http://localhost:5020/users
 
-# GET http://
+###
+GET http://localhost:5020/users/active
 
 
 ###
-POST http://localhost:5020/users
+POST http://localhost:5020/users/login
+Content-Type: application/json
+
+{
+    "email": "tuaemailpassword@gmail.com",
+    "password": "tuapassword"
+}
+
+###
+DELETE http://localhost:5020/users/<userId>
+Content-Type: application/json
+
+{
+    "email": "tuaemailpassword@gmail.com",
+    "password": "tuapassword"
+}
+
+###
+POST http://localhost:5020/users/register
 Content-Type: application/json
 
 {
     "firstName": "Pinco",
     "lastName": "Pallino",
-    "age": 35
+    "email": "pinco@example.com",
+    "password": "tuapassword",
 }
 ###
 PUT http://localhost:5020/users/50
@@ -25,4 +45,39 @@ Content-Type: application/json
 DELETE http://localhost:5020/users/100
 Content-Type: application/json
 
+
+###
+POST http://localhost:5020/posts
+Content-Type: application/json
+
+{
+    "title": "Titolo del post",
+    "category": "Categoria",
+    "cover": "https://example.com/immagine.jpg",
+    "content": "Contenuto del post",
+    "readTime": {
+        "value": 5,
+        "unit": "minutes"
+    },
+    "author": "ID_Dell_Autore"
+}
+###
+GET http://localhost:5020/posts
+Content-Type: application/json
+
+{
+    "title": "Titolo del post",
+    "category": "Categoria",
+    "cover": "URL della cover",
+    "content": "Contenuto del post",
+    "readTime": {
+        "value": 5,
+        "unit": "minutes"
+    },
+    "author": "ID_Dell_Autore"
+}
+
+### Ottieni un post specifico
+GET http://localhost:5020/posts/67e2e8a8455a5f33adb208ed
+Content-Type: application/json
 

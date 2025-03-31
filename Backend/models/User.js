@@ -3,37 +3,94 @@ import { model, Schema } from 'mongoose'
 
 const userSchema = new Schema({
 
-    name: String,
-    description: {
+    guid: {
         type: String,
-        required: false // Questo campo è richiesto 
+        // required: true, // Questo campo è richiesto 
+        // unique: true // Deve essere unico
+    },
+    isActive: {
+        type: Boolean,
+        default: false // Di default è true
+    },
+    balance: {
+        type: String,
+    },
+    picture: {
+        type: String,
+    },
+    age: {
+        type: Number,
+    },
+    eyeColor: {
+        type: String,
+        enum: ['blue', 'brown', 'green'], // L'Editor può modificare solo i propri articoli, l'Admin può fare tutto
+    },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    role: {
+        type: String,
+        enum: ['Editor', 'Admin'],
+        default: 'Editor'
+    },
+    company: {
+        type: String,
+    },
+    phone: {
+        type: String,
+    },
+    address: {
+        type: String,
+    },
+    about: {
+        type: String,
+    },
+    registered: {
+        type: String,
+    },
+    latitude: {
+        type: String,
+    },
+    longitude: {
+        type: String,
+    },
+    tags: [{
+        type: String,
+    }],
+    range: [{
+        type: Number,
+    }],
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    greeting: {
+        type: String,
+    },
+    favoriteFruit: {
+        type: String,
+        enum: ['apple', 'banana', 'strawberry']
+    },
+    profileImg: {   
+        type: String,
     },
 
-    // email: {
-    //     type: String,
-    //     required: false,
-    //     unique: true, // La email deve essere unica
-    //     lowercase: true, // trasforma la stringa in minuscolo prima di salvarla
-    //     trim: true,
-    //     match: [
-    //         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-    //         'Please fill a valid email address',
-    //     ], // validazione dell'input attraverso una RegEx
-    // },
-    // isAdmin: {
-    //     type: Boolean,
-    //     default: false
-    // },
-    // birthDate: {
-    //     type: Date,
-    //     min: '2020-02-16',
-    //     max: Date.now // data odierna come data massima
-    // },
-    // favoriteIceCream: {
-    //     type: String,
-    //     enum: ['cioccolato', 'vaniglia', 'pistacchio']
-    // },
-})
+}, { collection: 'users', timestamps: true } // Permette di salvare nel database la data di creazione e di modifica di un elemento
+)
 
 
 const User = model('User', userSchema) // Mongoose deve creare la collection su Mongo, prende il nome della risorsa e lo fa diventare plurale, minuscolo

@@ -6,12 +6,12 @@ body {
 }
 
 h1, h2 {
-  color: #333;
+  color: blue;
   text-align: center;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -56,6 +56,6 @@ input {
 }
 
 p {
-  color: green;
+  color: black;
   text-align: center;
 }
